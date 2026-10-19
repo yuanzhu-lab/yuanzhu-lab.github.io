@@ -1,0 +1,149 @@
+---
+title: "Compiler — My X Language"
+date: 2026-05-22 08:37:36
+categories: [sw]
+slug: compiler-my-x-language
+---
+{% raw %}
+<p>Note: This work has only completed the lexer, parser, and AST, the IR is yet to be implemented.</p>
+
+<p><a href="/assets/files/Xlang.zip">Xlang</a></p>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h1 class="wp-block-heading">X Language</h1>
+
+<h2 class="wp-block-heading">1 Quick Start</h2>
+
+<h3 class="wp-block-heading">Hello World Example</h3>
+
+<pre class="wp-block-code"><code>print("Hello, World!");</code></pre>
+
+<h3 class="wp-block-heading">Variables and Data Types</h3>
+
+<pre class="wp-block-code"><code>x = 10;        // integer
+y = 3.14;      // float
+name = "Alice"; // string</code></pre>
+
+<h3 class="wp-block-heading">Data Structures</h3>
+
+<pre class="wp-block-code"><code>array = &#91;1, 2, 3];        // array
+pair = {1: "value"};    // key-value pair</code></pre>
+
+<h3 class="wp-block-heading">Functions</h3>
+
+<pre class="wp-block-code"><code>function add(a, b)
+{
+    return a + b;
+}
+result = add(5, 3);</code></pre>
+
+<h3 class="wp-block-heading">Loops and Iteration</h3>
+
+<pre class="wp-block-code"><code>for(i: 0, 10)
+{
+    array&#91;i] = i;
+}</code></pre>
+
+<h3 class="wp-block-heading">Conditional Statements</h3>
+
+<pre class="wp-block-code"><code>if(x &gt; 5)
+    print("x is greater than 5");
+if (x == 5)
+    print("x is 5");
+else
+    print("x is less than 5");</code></pre>
+
+<h3 class="wp-block-heading">Input and Output</h3>
+
+<pre class="wp-block-code"><code>input = read();
+print("You entered:", input);</code></pre>
+
+<h3 class="wp-block-heading">Paragraph Example</h3>
+
+<pre class="wp-block-code"><code>x = 10;
+
+function max(a, b)
+{
+    if(a &gt;= b)
+        return a;
+    else
+        return b;
+}
+
+main()
+{
+    y = read();
+    print(max(x, y));
+}</code></pre>
+
+<h2 class="wp-block-heading">2 BNF Form</h2>
+
+<pre class="wp-block-code"><code>&lt;program&gt; ::= {&lt;var_decl&gt; | &lt;array_decl&gt; | &lt;key_value_decl&gt; | &lt;function&gt;} &lt;main&gt;
+        {&lt;var_decl&gt; | &lt;array_decl&gt; | &lt;key_value_decl&gt; | &lt;function&gt;}
+
+&lt;var_decl&gt; ::= &lt;identifier&gt; "=" &lt;expression&gt; ";"
+
+&lt;main&gt; ::= "main()" "{" {&lt;statement&gt;} "}"
+
+&lt;function&gt; ::= "function" &lt;identifier&gt; "(" &#91;&lt;param_list&gt;] ")" "{" {&lt;statement&gt;} "}"
+
+&lt;param_list&gt; ::= &lt;identifier&gt; {"," &lt;identifier&gt;}
+
+&lt;statement&gt; ::= &lt;assignment&gt;
+              | &lt;if_statement&gt;
+              | &lt;for_loop&gt;
+              | &lt;return_statement&gt;
+              | &lt;function_call&gt;
+
+&lt;assignment&gt; ::= &lt;identifier&gt; "=" &lt;expression&gt; ";"
+               | &lt;identifier&gt; "&#91;" &lt;expression&gt; "]" "=" &lt;expression&gt; ";"
+
+&lt;if_statement&gt; ::= "if" "(" &lt;expression&gt; ")" &lt;statement&gt; &#91;"else" &lt;statement&gt;]
+
+&lt;for_loop&gt; ::= "for" "(" &lt;identifier&gt; ":" &lt;expression&gt; "," &lt;expression&gt; ")" "{" {&lt;statement&gt;} "}"
+
+&lt;return_statement&gt; ::= "return" &#91;&lt;expression&gt;] ";"
+
+&lt;function_call&gt; ::= &lt;identifier&gt; "(" &#91;&lt;arg_list&gt;] ")" ";"
+
+&lt;array_decl&gt; ::= &lt;identifier&gt; "=" "&#91;" &lt;expression_list&gt; "]" ";"
+
+&lt;key_value_decl&gt; ::= &lt;identifier&gt; "=" "{" &lt;key_value_list&gt; "}" ";"
+
+&lt;expression_list&gt; ::= &lt;expression&gt; {"," &lt;expression&gt;}
+
+&lt;key_value_list&gt; ::= &lt;key_value_pair&gt; {"," &lt;key_value_pair&gt;}
+
+&lt;key_value_pair&gt; ::= &lt;expression&gt; ":" &lt;expression&gt;
+
+&lt;arg_list&gt; ::= &lt;expression&gt; {"," &lt;expression&gt;}
+
+&lt;expression&gt; ::= &lt;literal&gt;
+               | &lt;identifier&gt;
+               | &lt;function_call&gt;
+               | &lt;expression&gt; &lt;operator&gt; &lt;expression&gt;
+               | &lt;identifier&gt; "&#91;" &lt;expression&gt; "]"
+               | "(" &lt;expression&gt; ")"
+               | "{" &lt;key_value_list&gt; "}"
+
+&lt;literal&gt; ::= &lt;int&gt;
+            | &lt;float&gt;
+            | &lt;string&gt;
+
+&lt;operator&gt; ::= "+" | "-" | "*" | "/" | "==" | "&lt;" | "&gt;" | "&lt;=" | "&gt;="
+
+&lt;identifier&gt; ::= &lt;letter&gt; {&lt;letter&gt; | &lt;digit&gt;}
+
+&lt;int&gt; ::= &lt;digit&gt; {&lt;digit&gt;}
+
+&lt;float&gt; ::= &lt;digit&gt; {&lt;digit&gt;} "." {&lt;digit&gt;}
+
+&lt;string&gt; ::= "\"" {&lt;char&gt;} "\""
+
+&lt;letter&gt; ::= "a" | "b" | ... | "z" | "A" | "B" | ... | "Z"
+
+&lt;digit&gt; ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+
+&lt;char&gt; ::= &lt;letter&gt; | &lt;digit&gt; | &lt;other_chars&gt;</code></pre>
+{% endraw %}

@@ -1,0 +1,21 @@
+---
+title: "Android App — ChatGPT (no Google Play)"
+date: 2026-05-22 08:39:35
+categories: [sw]
+slug: android-app-chatgpt-no-google-play
+---
+{% raw %}
+<p>This project was developed as part of a mobile app coursework in Jun 2024, and the APK can be installed directly without Google Play.</p>
+
+<p><a href="/assets/files/ChatGPT.zip">ChatGPT</a></p>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h4 class="wp-block-heading">An Android client that wraps ChatGPT’s web interface in a WebView, enhanced with voice input and text-to-speech output for a minimal conversational experience.</h4>
+
+<h4 class="wp-block-heading">Core Features Web Wrapping: Embeds chat.openai.com in a WebView with navigation and progress tracking. Voice Input: Uses Android’s RecognizerIntent to capture speech, injects recognized text into the webpage’s input field, and triggers message send. Voice Output: Reads page content aloud via TextToSpeech, with progress callbacks. UI Controls: Toolbar with three actions—microphone, speaker, and exit; back button handles WebView navigation first, then exit confirmation.</h4>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h4 class="wp-block-heading">Testing &amp; Quality Unit and instrumented tests cover WebView behavior, voice pipeline, TTS initialization, and lifecycle. Espresso / UIAutomator for UI regression; Benchmark tests measure load and interaction performance. Includes screenshots and results to support reproducibility.</h4>
+{% endraw %}

@@ -1,0 +1,75 @@
+---
+title: "CxC AI Hackathon 2026 — LiveGuide"
+date: 2026-05-22 08:52:55
+categories: [ai]
+slug: cxc-ai-hackathon-2026-liveguide
+---
+{% raw %}
+<p><a href="/assets/files/LiveGuide.zip">LiveGuide</a></p>
+
+<p><a href="https://vimeo.com/1162994552?fl=ip&amp;fe=ec">Video</a> demo is here!</p>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h1 class="wp-block-heading">LiveGuide</h1>
+
+<h4 class="wp-block-heading">LiveGuide is a real-time scene assistance system built with YOLO (OpenImages) + VLM (Qwen/Gemini) + TTS (ElevenLabs). It supports webcam streaming and local video debugging, designed for low-latency, observable navigation guidance.</h4>
+
+<h2 class="wp-block-heading">Features</h2>
+
+<h4 class="wp-block-heading">● Real-time Perception: Leverages YOLOv8n-oiv7 (detecting 601 classes) enriched with MiDaS depth estimation for immediate object awareness.</h4>
+
+<h4 class="wp-block-heading">● Adaptive AI Backends: Supports hot-switching between qwen_local and gemini_api, optimized by a unique VLM triggering algorithm including interval and similarity gating.</h4>
+
+<h4 class="wp-block-heading">● Concurrency Control: Ensures stable multi-user support via Gradio through per-session pipeline isolation.</h4>
+
+<h2 class="wp-block-heading">Architecture</h2>
+
+<pre class="wp-block-code"><code>Camera / Video
+    -&gt; preprocess (resize/jpeg)
+    -&gt; YOLO detect (+ MiDaS depth)
+    -&gt; gating (interval + similarity)
+    -&gt; LLM queue (thread/process worker)
+    -&gt; short actionable sentence
+    -&gt; TTS
+    -&gt; Gradio UI + JSONL logs</code></pre>
+
+<h2 class="wp-block-heading">Quick Start</h2>
+
+<h3 class="wp-block-heading">1) Install</h3>
+
+<pre class="wp-block-code"><code>    python -m venv .venv
+    source .venv/bin/activate
+    pip install -U pip
+    pip install -r requirements.txt
+    pip install opencv-python</code></pre>
+
+<h3 class="wp-block-heading">2) Configure API Keys</h3>
+
+<h4 class="wp-block-heading">Verify config/runtime_config.yaml:</h4>
+
+<pre class="wp-block-code"><code>    llm.provider: gemini_api | qwen_local
+    tts.provider: elevenlabs</code></pre>
+
+<h3 class="wp-block-heading">3) Run Web App</h3>
+
+<pre class="wp-block-code"><code>    python gradio_app.py</code></pre>
+
+<h4 class="wp-block-heading">By default it listens on 0.0.0.0:8000.</h4>
+
+<h2 class="wp-block-heading">Usage</h2>
+
+<h3 class="wp-block-heading">Webcam (real-time)</h3>
+
+<h4 class="wp-block-heading">● Open the Webcam tab and start streaming</h4>
+
+<h4 class="wp-block-heading">● Detection Sensitivity dynamically controls LLM trigger behavior</h4>
+
+<h4 class="wp-block-heading">● Switch VLM Model between qwen_local and gemini_api</h4>
+
+<h3 class="wp-block-heading">Video File (debug)</h3>
+
+<h4 class="wp-block-heading">● Open the Video File tab and upload a video</h4>
+
+<h4 class="wp-block-heading">● Videos under test_videos/ appear as local examples</h4>
+{% endraw %}

@@ -1,0 +1,45 @@
+---
+title: "LLM Benchmark — Creative Magic Benchmark"
+date: 2026-10-16 23:22:33
+categories: [ai]
+slug: llm-benchmark-creative-magic
+---
+{% raw %}
+<p>A benchmark for evaluating how creative large language models are at designing magic tricks, completed in Dec 2024.</p>
+
+<p><a href="https://github.com/yuanzhu-lab/CreativeMagicBenchmark">Creative Magic Benchmark</a></p>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">Idea</h3>
+
+<p>Each magic trick in the dataset has a setting (location, props, optionally an image) and one or more reference schemes. A model proposes new schemes, which are judged from three viewpoints:</p>
+
+<ul class="wp-block-list"><li><strong>Setter</strong>: does the design use the given props and location?</li>
+
+<li><strong>Audience</strong>: is the effect entertaining to watch?</li>
+
+<li><strong>Performer</strong>: is it actually performable?</li>
+
+</ul>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">Scoring</h3>
+
+<p>Each viewpoint multiplies a <em>convergence</em> term (an LLM judge checks the constraint is met) by a <em>divergence</em> term (the fraction of extracted designs, effects or techniques that are not already in a list of common ones). The total is a weighted sum:</p>
+
+<p>Score = α · Score<sub>S</sub> + β · Score<sub>A</sub> + γ · Score<sub>P</sub></p>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">Details</h3>
+
+<ul class="wp-block-list"><li>Whether an idea counts as &#8220;common&#8221; is decided by spaCy similarity against the predefined lists.</li>
+
+<li>If a trick comes with an image, a ViLT model extracts its objects and adds them to the props.</li>
+
+<li>LLM judgments are averaged over several calls to reduce instability.</li>
+
+</ul>
+{% endraw %}

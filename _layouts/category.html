@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<h1 class="page-title">Category: {{ page.title }}</h1>
+<ol class="cards">
+  {% for post in site.categories[page.category] %}
+  <li class="card"><a href="{{ post.url | relative_url }}"><span class="card-title">{{ post.title }}</span></a></li>
+  {% endfor %}
+</ol>

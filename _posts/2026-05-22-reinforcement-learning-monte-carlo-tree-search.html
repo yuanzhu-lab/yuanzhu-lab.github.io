@@ -1,0 +1,103 @@
+---
+title: "Reinforcement Learning — Monte Carlo Tree Search"
+date: 2026-05-22 08:32:27
+categories: [ai]
+slug: reinforcement-learning-monte-carlo-tree-search
+---
+{% raw %}
+<p>An AI course project completed in Jun 2024.</p>
+
+<p><a href="/assets/files/MCTS.zip">MCTS</a></p>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h2 class="wp-block-heading">Project overview</h2>
+
+<ul class="wp-block-list"><li>This project is a fully functional chess game implemented in Python, that allows the users to play against a computer using various algorithms (MCTS and Minmax). It includes:</li>
+
+<li>A chess repository class that manages the game board and the pieces</li>
+
+<li>A game state class that handles the game logic</li>
+
+<li>A MCTS class that implements the Monte Carlo Tree Search algorithm</li>
+
+<li>A Minimax class that implements the Minimax algorithm</li>
+
+<li>A GUI class that implements the graphical user interface</li>
+
+<li>A UI class that implements the command line user interface</li>
+
+<li>A CNN class that implements a convolutional neural network.</li>
+</ul>
+
+<h2 class="wp-block-heading">Getting started</h2>
+
+<ul class="wp-block-list"><li>Prerequisites:</li>
+
+<li>Python 3.10.2 or newer</li>
+
+<li>PyQT5.15 or newer</li>
+
+<li>Tensorflow 2.6.0 or newer</li>
+
+<li>Running the project:</li>
+
+<li>To run the project, you need to run the main.py file.</li>
+
+<li>To switch between the command line and the graphical user interface, you need to change the value of the variable <code>use_gui</code> to <code>True</code> or <code>False</code> in the main.py file.</li>
+
+<li>Running the tests:</li>
+
+<li>To run the tests, you need to run the test_runner.py file.</li>
+
+<li>Making moves:</li>
+
+<li>To make moves in the command line interface, you need to enter the coordinates of the piece you want to move, and then the coordinates of the square you want to move it to. For example, <code>d2d4</code> will move the piece on the <code>d2</code> square to the <code>d4</code> square.</li>
+
+<li>To make moves in the graphical user interface, you need to click on the piece you want to move, and then click on the square you want to move it to.</li>
+</ul>
+
+<h2 class="wp-block-heading">Code Structure</h2>
+
+<ul class="wp-block-list"><li><code>ChessRepository</code>: Handles the game board and pieces, each chess piece has its own class.</li>
+
+<li><code>GameState</code>: Implements game logic and rules.</li>
+
+<li><code>MCTS</code>: Implements Monte Carlo Tree Search algorithm for AI.</li>
+
+<li><code>MCTSNode</code>: Implements the node of the MCTS tree.</li>
+
+<li><code>Minimax</code>: Implements Minimax algorithm for AI.</li>
+
+<li><code>HashTable</code>: Implements a hash table used for the MCTS &amp; Minimax algorithms.</li>
+
+<li><code>PrimeHandler</code>: Implements a class that handles prime numbers needed for the hash table.</li>
+
+<li><code>GUI</code>: Implements the graphical user interface.</li>
+
+<li><code>UI</code>: Implements the command line user interface.</li>
+
+<li><code>Piece</code>: Base class for all chess pieces.</li>
+
+<li><code>Pawn</code>: Inherits from Piece, implements Pawn's specific behavior.</li>
+
+<li><code>Rook</code>: Inherits from Piece, implements Rook's specific behavior.</li>
+
+<li><code>Knight</code>: Inherits from Piece, implements Knight's specific behavior.</li>
+
+<li><code>Bishop</code>: Inherits from Piece, implements Bishop's specific behavior.</li>
+
+<li><code>Queen</code>: Inherits from Piece, implements Queen's specific behavior.</li>
+
+<li><code>King</code>: Inherits from Piece, implements King's specific behavior.</li>
+
+<li><code>ConvolutionalNeuralNetwork</code>: Implements a convolutional neural network.</li>
+
+<li><code>TensorConverter</code>: Implements a class that converts a chess board to a tensor.</li>
+</ul>
+
+<h2 class="wp-block-heading">Documentation</h2>
+
+<ul class="wp-block-list"><li>For more information about the classes and methods, you can find their documentation in the Documentation folder.</li>
+</ul>
+{% endraw %}

@@ -1,0 +1,77 @@
+---
+title: "Image Captioning — DNAIC"
+date: 2026-05-22 08:57:23
+categories: [ai]
+slug: image-captioning-dnaic
+---
+{% raw %}
+<p>My undergraduate thesis, completed in Jun 2025.</p>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h2 class="wp-block-heading"><a href="https://github.com/yuanzhu-lab/DNAIC/archive/refs/heads/main.zip">DNAIC</a></h2>
+
+<h3 class="wp-block-heading">Pipeline</h3>
+
+<figure class="wp-block-image"><img src="/assets/img/dnaic-pipeline.svg" alt=""/></figure>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">Data Preparation</h3>
+
+<h4 class="wp-block-heading">The dataset should be placed in the `mscoco/` directory <code>mscoco/ |--feature/ |--coco2014/ |--train2014/ |--value2014/ |--test2014/ |--misc/ |--sent/ |--txt/</code></h4>
+
+<h4 class="wp-block-heading">Download link: <a href="https://pan.baidu.com/s/1KSYMOxvs-W6brrgpsZI9Aw?pwd=rain">mscoco</a></h4>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">Pre-trained Models Preparation</h3>
+
+<h4 class="wp-block-heading">Pre-trained models should be placed in the `pretrained_models/` directory <code>pretrained_models/ |-- mplug/ |-- swin-large-patch4-window12-384/ |-- vit/</code></h4>
+
+<h4 class="wp-block-heading">Download link: <a href="https://pan.baidu.com/s/19h-6fc48hiyFZupPSf_vuQ?pwd=rain">pretrained_models</a></h4>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">Training Process</h3>
+
+<h4 class="wp-block-heading">The model can be trained on NVIDIA GPU with CUDA support or Apple Silicon with MPS support (CPUs are not recommended).</h4>
+
+<h4 class="wp-block-heading">1. Environment Setup</h4>
+
+<h4 class="wp-block-heading">Python 3.12 <code>pip install -r requirements.txt</code></h4>
+
+<h4 class="wp-block-heading">2. Training Command <code>bash experiments/train.sh</code></h4>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">Evaluation</h3>
+
+<h4 class="wp-block-heading">1. Evaluation Script <code>bash experiments/eval.sh</code></h4>
+
+<h4 class="wp-block-heading">2. Evaluation Metrics Image Captioning: BLEU, METEOR, ROUGE-L, CIDEr Speed: Latency, SpeedUp</h4>
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><tbody><tr><th>Model</th><th>BLEU1</th><th>BLEU2</th><th>BLEU3</th><th>BLEU4</th><th>METEOR</th><th>ROUGEL</th><th>CIDEr</th></tr><tr><td>EENAIC</td><td>79.7</td><td>63.2</td><td>48.5</td><td>36.9</td><td>27.9</td><td>58.0</td><td>122.6</td></tr><tr><td>DNAIC</td><td>80.0</td><td>63.7</td><td>49.0</td><td>37.2</td><td>27.9</td><td>57.9</td><td>122.8</td></tr></tbody></table></figure>
+
+<h4 class="wp-block-heading">Download link: <a href="https://pan.baidu.com/s/1Gi55PFgfP5iTI0B5KF4yow?pwd=rain">DNAIC-base-0.2B</a></h4>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">Inference</h3>
+
+<h4 class="wp-block-heading">1. Inference Performance <code>bash experiments/inference.sh</code></h4>
+
+<h4 class="wp-block-heading">2. WebUI A Gradio-based web UI is also provided for users to perform inference through a graphical interface. <code>python webui.py</code></h4>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">Credits</h3>
+
+<h4 class="wp-block-heading">This project is based on the following resources: MSCOCO mPLUG EENAIC</h4>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">License</h3>
+
+<h4 class="wp-block-heading">This project is licensed under the terms specified in MIT LICENSE.</h4>
+{% endraw %}

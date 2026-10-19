@@ -1,0 +1,54 @@
+---
+title: "Proof Audit — Erdős Problem #510, λ(4)"
+date: 2026-10-16 23:22:33
+categories: [math]
+slug: proof-audit-erdos-510-lambda-4
+---
+{% raw %}
+<p>An independent re-check of a machine-derived proof for Erdős Problem #510, completed in Sep 2026.</p>
+
+<p><a href="https://github.com/yuanzhu-lab/erdos510-lambda4-audit">erdos510-lambda4-audit</a></p>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">The claim</h3>
+
+<p>Among all sets of four positive integers, {1, 2, 3, 4} has the shallowest cosine-sum minimum:</p>
+
+<p>λ(4) = −min<sub>t</sub> (cos t + cos 2t + cos 3t + cos 4t) ≈ 1.5195578816428,</p>
+
+<p>the largest root of 512y³ − 1227y² + 600y + 125. The proof was produced by the cert-machine engine and announced in <a href="https://github.com/teorth/erdosproblems/issues/392">teorth/erdosproblems#392</a>.</p>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">Method</h3>
+
+<ul class="wp-block-list"><li>All computations use my own code; none of the engine&#8217;s code is executed.</li>
+
+<li>The engine&#8217;s record is used only as data, to learn which argument each step claims. Each claim is then re-derived from scratch and compared.</li>
+
+</ul>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">Result</h3>
+
+<p>Every layer of the proof checks out. No mathematical error was found; five documentation issues are listed.</p>
+
+<ul class="wp-block-list"><li>Exact value: resultant = 2048 · (cubic), agreement to 190 digits.</li>
+
+<li>Generic case: 14 collision conditions derived exhaustively.</li>
+
+<li>9 family theorems and every subfamily closure: identical to the record.</li>
+
+<li>Finite certificates: 2,231 / 2,231 re-enumerated and certified with interval arithmetic.</li>
+
+<li>Proof-independent sweep: all 1,473,833 reduced 4-sets with max ≤ 80 dip strictly deeper than {1, 2, 3, 4}.</li>
+
+</ul>
+
+<pre class="wp-block-code"><code>pip install -r requirements.txt
+bash run_all.sh        # about a minute</code></pre>
+
+<p>The audit scripts were written with AI assistance (Claude); I reviewed the method and the results.</p>
+{% endraw %}

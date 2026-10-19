@@ -1,0 +1,57 @@
+---
+title: "Formal Verification — LeanPolyLog"
+date: 2026-10-16 23:22:33
+categories: [math]
+slug: formal-verification-leanpolylog
+---
+{% raw %}
+<p>A Lean 4 / Mathlib formalization of the sixteen identities in my 2022 tutorial <em>PolyLog Integrals</em>, completed in Oct 2026.</p>
+
+<p><a href="https://github.com/yuanzhu-lab/LeanPolyLog">LeanPolyLog</a></p>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">What it proves</h3>
+
+<p>Sixteen log-trigonometric and polylogarithmic integrals, with closed forms in π, log 2, Catalan&#8217;s constant G, ζ(3), Li<sub>4</sub>(½) and Im Li<sub>3</sub>((1+i)/2). For example:</p>
+
+<ul class="wp-block-list"><li>Li<sub>2</sub>(i) = −π²/48 + iG</li>
+
+<li>Li<sub>2</sub>((√5−1)/2) = π²/10 − log²φ</li>
+
+<li>∫<sub>0</sub><sup>1</sup> log(1+x²)/x dx = π²/24</li>
+
+<li>∫<sub>0</sub><sup>π/2</sup> x log² sin x dx</li>
+
+<li>∫<sub>0</sub><sup>1</sup> Li<sub>3</sub>(x)/(x√(1−x²)) dx</li>
+
+</ul>
+
+<p>All sixteen are proven, with no <code>sorry</code>, and every proof depends only on Lean&#8217;s standard axioms.</p>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">How it is checked</h3>
+
+<ul class="wp-block-list"><li>The Lean kernel checks every proof.</li>
+
+<li>A CI test fails if any proof picks up <code>sorry</code> or a non-standard axiom.</li>
+
+<li>Lean cannot check that a statement means what was intended, so each statement also has a numerical twin evaluated with mpmath at 80 digits; CI requires agreement to 60 digits.</li>
+
+</ul>
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+<h3 class="wp-block-heading">Notes</h3>
+
+<ul class="wp-block-list"><li>Mathlib has no polylogarithms or Catalan&#8217;s constant yet, so <code>Li s z</code>, <code>G</code> and <code>ζ(3)</code> are defined by their series.</li>
+
+<li>Mathlib has no half-disc Cauchy theorem, so one identity is proven by differentiating in the radius instead of integrating over a contour.</li>
+
+<li>Writing it down formally caught one error in the 2022 tutorial (a corrected value of π²/24).</li>
+
+<li>The Lean code was written with AI assistance (Claude); every statement and proof was reviewed by me.</li>
+
+</ul>
+{% endraw %}

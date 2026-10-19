@@ -1,0 +1,8 @@
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="{{ '/' | relative_url }}"><span>~/</span>yuanzhu</a>
+    <nav aria-label="Categories">
+      {% for c in site.nav %}<a href="{{ '/category/' | append: c.slug | append: '/' | relative_url }}"{% if page.category == c.slug %} aria-current="page"{% endif %}>{{ c.name }}</a>{% endfor %}
+    </nav>
+  </div>
+</header>

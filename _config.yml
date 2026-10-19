@@ -1,0 +1,22 @@
+title: yuanzhu
+description: Projects in data science, AI, software and math.
+url: https://yuanzhu-lab.github.io
+baseurl: ""
+permalink: /:year/:month/:day/:slug/
+timezone: America/Toronto
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+nav:
+  - { slug: ds,   name: Data Science }
+  - { slug: ai,   name: AI }
+  - { slug: sw,   name: Software Dev }
+  - { slug: math, name: Math }
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+excerpt_separator: "<!--more-->"
